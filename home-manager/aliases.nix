@@ -1,0 +1,4 @@
+{
+  lz = "lazygit";
+  z = "zellij";
+}
