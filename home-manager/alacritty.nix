@@ -6,4 +6,10 @@
   window = {
     startup_mode = "Maximized";
   };
+  font = {
+    normal = {
+      family = "DejaVu Sans Mono";
+      style = "Book";
+    };
+  };
 }
