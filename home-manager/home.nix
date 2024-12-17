@@ -25,6 +25,8 @@
     shellAliases = import ./aliases.nix;
   };
 
+  programs.fzf.enable = true;
+
   programs.home-manager.enable = true;
 
   home.stateVersion = "24.05";
