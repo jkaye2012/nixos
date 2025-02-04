@@ -35,7 +35,7 @@
     };
 
     homeConfigurations."jkaye" = home-manager.lib.homeManagerConfiguration {
-      pkgs = nixpkgs;
+      pkgs = nixpkgs.legacyPackages.${system};
       modules = [ ./home-manager/home.nix ];
       extraSpecialArgs = { inherit inputs outputs system; };
     };

@@ -1,4 +1,4 @@
-{ pkgs, ... }: 
+{ pkgs, inputs, ... }:
 {
   nixpkgs = {
     config = {
@@ -11,7 +11,10 @@
     homeDirectory = "/home/jkaye";
 
     packages = with pkgs; [
+      firefox
+      gimp
       joplin-desktop
+      inputs.devenv.packages.${system}.default
     ];
   };
 
@@ -23,6 +26,20 @@
   programs.bash = {
     enable = true;
     shellAliases = import ./aliases.nix;
+
+    profileExtra = ''
+      /usr/bin/setxkbmap -option ctrl:swapcaps
+      eval $(systemctl --user show-environment | grep SSH_AUTH_SOCK)
+      export SSH_AUTH_SOCK
+      export LOCALE_ARCHIVE=/usr/lib/locale/locale-archive
+    '';
+
+    bashrcExtra = ''
+      ${(import ./bash-functions.nix).setPrompt}
+
+      export PROMPT_COMMAND=set_prompt
+      . "$HOME/.secrets"
+    '';
   };
 
   programs.fzf.enable = true;
