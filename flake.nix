@@ -8,9 +8,6 @@
     devenv.url = "github:jkaye2012/devenv/main";
     devenv.inputs.nixpkgs.follows = "nixpkgs";
 
-    # Ghostty
-    ghostty.url = "github:ghostty-org/ghostty";
-
     # Home-manager
     home-manager.url = "github:nix-community/home-manager/release-24.11";
     home-manager.inputs.nixpkgs.follows = "nixpkgs";
@@ -35,6 +32,12 @@
           home-manager.users.jkaye = import ./home-manager/home.nix;
         }
       ];
+    };
+
+    homeConfigurations."jkaye" = home-manager.lib.homeManagerConfiguration {
+      pkgs = nixpkgs;
+      modules = [ ./home-manager/home.nix ];
+      extraSpecialArgs = { inherit inputs outputs system; };
     };
   };
 }
