@@ -25,7 +25,7 @@
 
   programs.bash = {
     enable = true;
-    shellAliases = import ./aliases.nix;
+    shellAliases = inputs.devenv.lib.bashAliases;
 
     profileExtra = ''
       /usr/bin/setxkbmap -option ctrl:swapcaps
