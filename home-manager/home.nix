@@ -32,6 +32,7 @@
       eval $(systemctl --user show-environment | grep SSH_AUTH_SOCK)
       export SSH_AUTH_SOCK
       export LOCALE_ARCHIVE=/usr/lib/locale/locale-archive
+      export XDG_DATA_DIRS="$HOME/.nix-profile/share:$XDG_DATA_DIRS"
     '';
 
     bashrcExtra = ''
