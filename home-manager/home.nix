@@ -11,11 +11,16 @@
     homeDirectory = "/home/jkaye";
 
     packages = with pkgs; [
+      chromium
       firefox
       gimp
       joplin-desktop
+      spotify
+
       inputs.devenv.packages.${system}.default
     ];
+
+    file.".config/helix/languages.toml".source = ./helix-languages.toml;
   };
 
   programs.alacritty = {
