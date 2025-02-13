@@ -50,6 +50,13 @@
 
   programs.fzf.enable = true;
 
+  programs.git = {
+    enable = true;
+    ignores = [
+      "lsp-ai-chat.md"
+    ];
+  };
+
   programs.home-manager.enable = true;
 
   home.stateVersion = "24.05";
