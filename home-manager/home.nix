@@ -15,7 +15,9 @@
       firefox
       gimp
       joplin-desktop
+      nemo
       spotify
+      xrdp
 
       inputs.devenv.packages.${system}.default
     ];

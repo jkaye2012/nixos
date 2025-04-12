@@ -30,18 +30,6 @@ system = "You are an AI coding assistant. Your task is to complete code snippets
 role = "user"
 content = "{CODE}"
 
-# [language-server.lsp-ai.config.completion]
-# model = "model1"
-
-# [language-server.lsp-ai.config.completion.parameters]
-# max_tokens = 64
-# max_context = 1024
-# system = "Instructions:\n- You are an AI programming assistant.\n- Given a piece of code with the cursor location marked by \"<CURSOR>\", replace \"<CURSOR>\" with the correct code or comment.\n- First, think step-by-step.\n- Describe your plan for what to build in pseudocode, written out in great detail.\n- Then output the code replacing the \"<CURSOR>\"\n- Ensure that your completion fits within the language context of the provided code snippet (e.g., Python, JavaScript, Rust).\n\nRules:\n- Only respond with code or comments.\n- Only replace \"<CURSOR>\"; do not include any previously written code.\n- Never include \"<CURSOR>\" in your response\n- If the cursor is within a comment, complete the comment meaningfully.\n- Handle ambiguous cases by providing the most contextually appropriate completion.\n- Be consistent with your responses."
-
-# [[language-server.lsp-ai.config.completion.parameters.messages]]
-# role = "user"
-# content = "{CODE}"
-
 [[language-server.lsp-ai.config.chat]]
 trigger = "!C"
 action_display_name = "Chat"
@@ -59,6 +47,7 @@ auto-format = true
 
 [language-server.rust-analyzer.config]
 cargo.features = "all"
+# check.command = "clippy"
 
 [[language]]
 name = "rust"
