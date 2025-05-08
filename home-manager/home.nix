@@ -1,4 +1,9 @@
-{ pkgs, inputs, ... }:
+{
+  pkgs,
+  inputs,
+  system,
+  ...
+}:
 {
   nixpkgs = {
     config = {
@@ -46,7 +51,11 @@
       ${(import ./bash-functions.nix).setPrompt}
 
       export PROMPT_COMMAND=set_prompt
-      . "$HOME/.secrets"
+      if [ -f "$HOME/.secrets" ]; then
+        . "$HOME/.secrets"
+      fi
+
+      ${inputs.devenv.devShells.${system}.default.shellHook}
     '';
   };
 
