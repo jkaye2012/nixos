@@ -13,31 +13,58 @@
     home-manager.inputs.nixpkgs.follows = "nixpkgs";
   };
 
-  outputs = { self, nixpkgs, home-manager, ... }@inputs: 
-    let 
-      inherit (self) outputs; 
+  outputs =
+    {
+      self,
+      nixpkgs,
+      home-manager,
+      ...
+    }@inputs:
+    let
+      inherit (self) outputs;
       system = "x86_64-linux";
-    in {
-    nixosConfigurations.nixos = nixpkgs.lib.nixosSystem {
-      inherit system;
-      specialArgs = { inherit inputs outputs system; };
-      modules = [
-        ./configuration.nix
-        ./system-packages.nix
+    in
+    {
+      nixosConfigurations.nixos = nixpkgs.lib.nixosSystem {
+        inherit system;
+        specialArgs = { inherit inputs outputs system; };
+        modules = [
+          ./configuration.nix
+          ./system-packages.nix
 
-        home-manager.nixosModules.home-manager {
-          home-manager.useGlobalPkgs = true;
-          home-manager.useUserPackages = true;
-          home-manager.extraSpecialArgs = { inherit inputs outputs system; };
-          home-manager.users.jkaye = import ./home-manager/home.nix;
-        }
-      ];
-    };
+          home-manager.nixosModules.home-manager
+          {
+            home-manager.useGlobalPkgs = true;
+            home-manager.useUserPackages = true;
+            home-manager.extraSpecialArgs = { inherit inputs outputs system; };
+            home-manager.users.jkaye = import ./home-manager/home.nix;
+          }
+        ];
+      };
 
-    homeConfigurations."jkaye" = home-manager.lib.homeManagerConfiguration {
-      pkgs = nixpkgs.legacyPackages.${system};
-      modules = [ ./home-manager/home.nix ];
-      extraSpecialArgs = { inherit inputs outputs system; };
+      homeConfigurations."jkaye@jkaye-framework" = home-manager.lib.homeManagerConfiguration {
+        pkgs = nixpkgs.legacyPackages.${system};
+        modules = [ ./home-manager/home.nix ];
+        extraSpecialArgs = { inherit inputs outputs system; };
+      };
+
+      homeConfigurations."jkaye@colwksdev001" = home-manager.lib.homeManagerConfiguration rec {
+        pkgs = nixpkgs.legacyPackages.${system};
+        modules = [
+          ./home-manager/home.nix
+          ./home-manager/i3/default.nix
+        ];
+        extraSpecialArgs = {
+          inherit inputs outputs system;
+          extra-pkgs = with pkgs; [
+            font-awesome
+            mate.mate-power-manager
+            powerline-fonts
+            powerline-symbols
+            ripgrep
+            rofi
+          ];
+        };
+      };
     };
-  };
 }

@@ -2,6 +2,7 @@
   pkgs,
   inputs,
   system,
+  extra-pkgs ? [ ],
   ...
 }:
 {
@@ -15,17 +16,23 @@
     username = "jkaye";
     homeDirectory = "/home/jkaye";
 
-    packages = with pkgs; [
-      chromium
-      firefox
-      gimp
-      joplin-desktop
-      nemo
-      spotify
-      xrdp
+    packages =
+      with pkgs;
+      [
+        bash-language-server
+        chromium
+        firefox
+        gimp
+        joplin-desktop
+        nemo
+        spotify
+        taplo
+        xrdp
+        yaml-language-server
 
-      inputs.devenv.packages.${system}.default
-    ];
+        inputs.devenv.packages.${system}.default
+      ]
+      ++ extra-pkgs;
 
     file.".config/helix/languages.toml".source = ./helix-languages.toml;
   };
