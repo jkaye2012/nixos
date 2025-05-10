@@ -45,7 +45,10 @@
       homeConfigurations."jkaye@jkaye-framework" = home-manager.lib.homeManagerConfiguration {
         pkgs = nixpkgs.legacyPackages.${system};
         modules = [ ./home-manager/home.nix ];
-        extraSpecialArgs = { inherit inputs outputs system; };
+        extraSpecialArgs = {
+          inherit inputs outputs system;
+          extra-pkgs = [ ];
+        };
       };
 
       homeConfigurations."jkaye@colwksdev001" = home-manager.lib.homeManagerConfiguration rec {

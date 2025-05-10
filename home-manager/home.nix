@@ -2,7 +2,7 @@
   pkgs,
   inputs,
   system,
-  extra-pkgs ? [ ],
+  extra-pkgs,
   ...
 }:
 {
