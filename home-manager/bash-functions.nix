@@ -9,6 +9,7 @@
       COLOR_HOSTNAME="\[\e[34;1m\]"
       COLOR_GITBRANCH="\[\e[33;1m\]"
       COLOR_VENV="\[\e[33;1m\]"
+      COLOR_NIX="\[\e[36;1m\]"
       COLOR_GREEN="\[\e[32;1m\]"
       COLOR_PATH_OK="\[\e[32;1m\]"
       COLOR_PATH_ERR="\[\e[31;1m\]"
@@ -39,7 +40,13 @@
 
       # When we're in a nix devShell, annotate the PS1 with the environment's name
       if [ -n "$name" ]; then
-        PS1="(nix:''${name}) ''${PS1}"
+        PS1="(nix:''${COLOR_NIX}''${name}''${COLOR_NONE}) ''${PS1}"
+      fi
+
+      # Provide Python virtual environment information when one is sourced
+      if [ -n "$VIRTUAL_ENV" ]; then
+        VENV_NAME="$(basename "$VIRTUAL_ENV")"
+        PS1="(venv:''${COLOR_VENV}''${VENV_NAME}''${COLOR_NONE}) ''${PS1}"
       fi
     }
   '';
