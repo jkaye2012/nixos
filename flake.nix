@@ -36,7 +36,10 @@
           {
             home-manager.useGlobalPkgs = true;
             home-manager.useUserPackages = true;
-            home-manager.extraSpecialArgs = { inherit inputs outputs system; };
+            home-manager.extraSpecialArgs = {
+              inherit inputs outputs system;
+              extra-pkgs = [ ];
+            };
             home-manager.users.jkaye = import ./home-manager/home.nix;
           }
         ];
