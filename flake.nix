@@ -72,5 +72,14 @@
           ];
         };
       };
+
+      homeConfigurations."gitpod" = home-manager.lib.homeManagerConfiguration {
+        pkgs = nixpkgs.legacyPackages.${system};
+        modules = [ ./home-manager/gitpod-home.nix ];
+        extraSpecialArgs = {
+          inherit inputs outputs system;
+          extra-pkgs = [ ];
+        };
+      };
     };
 }
