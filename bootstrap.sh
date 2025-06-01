@@ -10,4 +10,4 @@ bash -l -c "nix-channel --update"
 bash -l -c "nix-shell '<home-manager>' -A install"
 rm -rf ~/.config/home-manager/ ~/.bash_profile ~/.bashrc 
 ln -s $HOME/.dotfiles $HOME/.config/home-manager
-bash -l -c "home-manager switch"
+# bash -l -c "home-manager switch"
