@@ -81,3 +81,19 @@ auto-format = true
 name = "python"
 language-servers = ["ruff", "pylsp", "lsp-ai"]
 auto-format = true
+
+[language-server.clangd]
+command = "clangd"
+args = [
+  "--clang-tidy",
+  "--header-insertion=iwyu",
+  "-j=4",
+  "--background-index",
+  "--pch-storage=disk",
+  "--query-driver=**",
+]
+
+[[language]]
+name = "cpp"
+language-servers = ["clangd", "lsp-ai"]
+auto-format = true
