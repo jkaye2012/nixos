@@ -10,4 +10,4 @@ nix-channel --update &&
 nix-shell '<home-manager>' -A install &&
 rm -rf ~/.config/home-manager/ ~/.bash_profile ~/.bashrc  &&
 ln -s $HOME/.dotfiles $HOME/.config/home-manager &&
-home-manager switch -b"
+home-manager switch -b bak"
