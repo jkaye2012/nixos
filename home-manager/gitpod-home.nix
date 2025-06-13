@@ -1,4 +1,3 @@
-
 {
   pkgs,
   inputs,
@@ -38,6 +37,8 @@
     profileExtra = ''
       export LOCALE_ARCHIVE=/usr/lib/locale/locale-archive
       export XDG_DATA_DIRS="$HOME/.nix-profile/share:$XDG_DATA_DIRS"
+      export EDITOR=hx
+      export GIT_EDITOR=hx
 
       if [[ -n $SSH_CONNECTION ]]; then cd "$GITPOD_REPO_ROOT"; fi
     '';
