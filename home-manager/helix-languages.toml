@@ -97,3 +97,23 @@ args = [
 name = "cpp"
 language-servers = ["clangd", "lsp-ai"]
 auto-format = true
+
+[[language]]
+name = "starlark"
+scope = "source.starlark"
+injection-regex = "(starlark|bzl|bazel|buck)"
+file-types = [
+  "bzl",
+  "bazel",
+  "star",
+  { glob = "BUILD" },
+  { glob = "BUCK" },
+  { glob = "BUILD.*" },
+  { glob = "Tiltfile" },
+  { glob = "WORKSPACE" },
+  { glob = "WORKSPACE.bzlmod" },
+]
+comment-token = "#"
+indent = { tab-width = 4, unit = "    " }
+language-servers = ["starpls"]
+grammar = "python"

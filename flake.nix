@@ -46,11 +46,15 @@
       };
 
       homeConfigurations."jkaye@jkaye-framework" = home-manager.lib.homeManagerConfiguration {
-        pkgs = nixpkgs.legacyPackages.${system};
+        pkgs = import nixpkgs {
+          inherit system;
+          config.allowUnfree = true;
+        };
         modules = [ ./home-manager/home.nix ];
         extraSpecialArgs = {
           inherit inputs outputs system;
-          extra-pkgs = [ ];
+          extra-pkgs = [
+          ];
         };
       };
 
