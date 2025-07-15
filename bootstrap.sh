@@ -2,6 +2,7 @@
 
 if id nixbld &>/dev/null; then
   sudo userdel nixbld
+  sudo groupdel nixbld
 fi
 
 wget -O /tmp/nix-install https://nixos.org/nix/install
