@@ -1,5 +1,9 @@
 #!/bin/bash
 
+if id nixbld &>/dev/null; then
+  sudo userdel nixbld
+fi
+
 wget -O /tmp/nix-install https://nixos.org/nix/install
 chmod +x /tmp/nix-install
 /tmp/nix-install --daemon --yes --nix-extra-conf-file "$HOME/.dotfiles/nix.conf"
