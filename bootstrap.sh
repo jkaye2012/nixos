@@ -1,7 +1,12 @@
 #!/bin/bash
 
 if id nixbld &>/dev/null; then
+  echo "Deleting user nixbld"
   sudo userdel nixbld
+fi
+
+if getent group nixbld &>/dev/null; then
+  echo "Deleting group nixbld"
   sudo groupdel nixbld
 fi
 
