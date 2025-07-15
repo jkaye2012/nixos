@@ -10,6 +10,13 @@ if getent group nixbld &>/dev/null; then
   sudo groupdel nixbld
 fi
 
+for i in {1..32}; do
+  if id "nixbld$i" &>/dev/null; then
+    echo "Deleting user nixbld$i"
+    sudo userdel "nixbld$i"
+  fi
+done
+
 wget -O /tmp/nix-install https://nixos.org/nix/install
 chmod +x /tmp/nix-install
 /tmp/nix-install --daemon --yes --nix-extra-conf-file "$HOME/.dotfiles/nix.conf"
