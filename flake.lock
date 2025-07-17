@@ -10,11 +10,11 @@
         "wrapper-manager": "wrapper-manager"
       },
       "locked": {
-        "lastModified": 1752667863,
-        "narHash": "sha256-YQcbcoC+2pr62u5Iy1W6rGAJJUk30+hl90zJqvSHKGI=",
+        "lastModified": 1752753265,
+        "narHash": "sha256-TWZeps2J9prvb7kb1ngiVeSckwCSY3m1UgeypC7YYyA=",
         "owner": "jkaye2012",
         "repo": "devenv",
-        "rev": "babb1c85608830ca9109bbed99eb87ed6a01ddaf",
+        "rev": "f13f6c06e3898ec94945941b8c3f40c523869cb7",
         "type": "github"
       },
       "original": {
@@ -87,11 +87,11 @@
     },
     "nixpkgs": {
       "locked": {
-        "lastModified": 1752436162,
-        "narHash": "sha256-Kt1UIPi7kZqkSc5HVj6UY5YLHHEzPBkgpNUByuyxtlw=",
+        "lastModified": 1752620740,
+        "narHash": "sha256-f3pO+9lg66mV7IMmmIqG4PL3223TYMlnlw+pnpelbss=",
         "owner": "NixOS",
         "repo": "nixpkgs",
-        "rev": "dfcd5b901dbab46c9c6e80b265648481aafb01f8",
+        "rev": "32a4e87942101f1c9f9865e04dc3ddb175f5f32e",
         "type": "github"
       },
       "original": {
