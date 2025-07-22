@@ -45,6 +45,27 @@
         ];
       };
 
+      nixosConfigurations.colwksdev001 = nixpkgs.lib.nixosSystem {
+        inherit system;
+        specialArgs = { inherit inputs outputs system; };
+        modules = [
+          ./bt-configuration.nix
+          ./system-packages.nix
+
+          home-manager.nixosModules.home-manager
+          {
+            home-manager.useGlobalPkgs = true;
+            home-manager.useUserPackages = true;
+            home-manager.extraSpecialArgs = {
+              inherit inputs outputs system;
+              extra-pkgs = [ ];
+            };
+            home-manager.users.jkaye = import ./home-manager/home.nix;
+          }
+        ];
+      };
+
+
       homeConfigurations."jkaye@jkaye-framework" = home-manager.lib.homeManagerConfiguration {
         pkgs = import nixpkgs {
           inherit system;

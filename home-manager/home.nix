@@ -47,7 +47,7 @@
     shellAliases = inputs.devenv.lib.bashAliases;
 
     profileExtra = ''
-      /usr/bin/setxkbmap -option ctrl:swapcaps
+      setxkbmap -option ctrl:swapcaps
       eval $(systemctl --user show-environment | grep SSH_AUTH_SOCK)
       export SSH_AUTH_SOCK
       export LOCALE_ARCHIVE=/usr/lib/locale/locale-archive
@@ -70,6 +70,8 @@
 
   programs.git = {
     enable = true;
+    userName = "Jordan Kaye";
+    userEmail = "jordan.kaye2@gmail.com";
     ignores = [
       "lsp-ai-chat.md"
     ];
