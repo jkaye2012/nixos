@@ -47,7 +47,9 @@
     shellAliases = inputs.devenv.lib.bashAliases;
 
     profileExtra = ''
-      setxkbmap -option ctrl:swapcaps
+      if command -v setxkbmap >/dev/null 2>&1; then
+        setxkbmap -option ctrl:swapcaps
+      fi
       eval $(systemctl --user show-environment | grep SSH_AUTH_SOCK)
       export SSH_AUTH_SOCK
       export LOCALE_ARCHIVE=/usr/lib/locale/locale-archive
