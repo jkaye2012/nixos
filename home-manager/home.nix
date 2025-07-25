@@ -68,6 +68,21 @@
     '';
   };
 
+  programs.ssh = {
+    enable = true;
+    serverAliveInterval = 240;
+    includes = [
+      "code_gitpod.d/config"
+    ];
+
+    matchBlocks."*" = {
+      forwardX11 = true;
+      setEnv = {
+        "TERM" = "xterm-256color";
+      };
+    };
+  };
+
   programs.fzf.enable = true;
 
   programs.git = {
