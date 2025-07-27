@@ -20,6 +20,11 @@
       inherit (self) outputs;
       system = "x86_64-linux";
       lib = nixpkgs.lib;
+      extraSpecialArgs = {
+        inherit inputs outputs system;
+        extra-pkgs = [ ];
+        extra-aliases = { };
+      };
 
       vpsConfigs =
         let
@@ -47,9 +52,10 @@
               home-manager.nixosModules.home-manager
               {
                 home-manager.useUserPackages = true;
-                home-manager.extraSpecialArgs = {
-                  inherit inputs outputs system;
-                  extra-pkgs = [ ];
+                home-manager.extraSpecialArgs = extraSpecialArgs // {
+                  extra-aliases = {
+                    rebuild = "sudo nixos-rebuild switch --flake /home/jkaye/nixos";
+                  };
                 };
                 home-manager.users.jkaye = import ./home-manager/home.nix;
               }
@@ -69,10 +75,7 @@
             home-manager.nixosModules.home-manager
             {
               home-manager.useUserPackages = true;
-              home-manager.extraSpecialArgs = {
-                inherit inputs outputs system;
-                extra-pkgs = [ ];
-              };
+              home-manager.extraSpecialArgs = extraSpecialArgs;
               home-manager.users.jkaye = import ./home-manager/home.nix;
             }
           ];
@@ -88,10 +91,7 @@
             home-manager.nixosModules.home-manager
             {
               home-manager.useUserPackages = true;
-              home-manager.extraSpecialArgs = {
-                inherit inputs outputs system;
-                extra-pkgs = [ ];
-              };
+              home-manager.extraSpecialArgs = extraSpecialArgs;
               home-manager.users.jkaye = import ./home-manager/home.nix;
             }
           ];
@@ -105,20 +105,13 @@
           config.allowUnfree = true;
         };
         modules = [ ./home-manager/home.nix ];
-        extraSpecialArgs = {
-          inherit inputs outputs system;
-          extra-pkgs = [
-          ];
-        };
+        extraSpecialArgs = extraSpecialArgs;
       };
 
       homeConfigurations."gitpod" = home-manager.lib.homeManagerConfiguration {
         pkgs = nixpkgs.legacyPackages.${system};
         modules = [ ./home-manager/gitpod-home.nix ];
-        extraSpecialArgs = {
-          inherit inputs outputs system;
-          extra-pkgs = [ ];
-        };
+        extraSpecialArgs = extraSpecialArgs;
       };
     };
 }
