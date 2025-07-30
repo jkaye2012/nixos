@@ -71,6 +71,7 @@
   programs.ssh = {
     enable = true;
     serverAliveInterval = 240;
+    controlPath = "~/.ssh/master-%C";
     includes = [
       "code_gitpod.d/config"
     ];
