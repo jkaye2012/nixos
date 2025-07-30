@@ -3,6 +3,7 @@
   inputs,
   system,
   extra-pkgs,
+  extra-aliases,
   ...
 }:
 {
@@ -37,14 +38,9 @@
     file.".config/helix/languages.toml".source = ./helix-languages.toml;
   };
 
-  programs.alacritty = {
-    enable = true;
-    settings = import ./alacritty.nix;
-  };
-
   programs.bash = {
     enable = true;
-    shellAliases = inputs.devenv.lib.bashAliases;
+    shellAliases = inputs.devenv.lib.bashAliases // extra-aliases;
 
     profileExtra = ''
       if command -v setxkbmap >/dev/null 2>&1; then
