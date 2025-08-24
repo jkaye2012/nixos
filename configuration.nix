@@ -1,11 +1,13 @@
 { pkgs, ... }:
 {
-  imports =
-    [
-      ./hardware-configuration.nix
-    ];
+  imports = [
+    ./hardware-configuration.nix
+  ];
 
-  nix.settings.experimental-features = [ "nix-command" "flakes" ];
+  nix.settings.experimental-features = [
+    "nix-command"
+    "flakes"
+  ];
 
   boot.loader.systemd-boot.enable = true;
   boot.loader.efi.canTouchEfiVariables = true;
@@ -38,16 +40,16 @@
     displayManager.lightdm.enable = true;
     desktopManager.xfce.enable = true;
 
-    xkb =  {
+    xkb = {
       layout = "us";
       variant = "";
       options = "ctrl:swapcaps";
-    };  
+    };
   };
 
   services.printing.enable = true;
 
-  hardware.pulseaudio.enable = false;
+  services.pulseaudio.enable = false;
 
   security.rtkit.enable = true;
 
@@ -70,7 +72,10 @@
   users.users.jkaye = {
     isNormalUser = true;
     description = "Jordan Kaye";
-    extraGroups = [ "networkmanager" "wheel" ];
+    extraGroups = [
+      "networkmanager"
+      "wheel"
+    ];
   };
 
   programs.firefox.enable = true;

@@ -11,9 +11,9 @@
     ghostty
     git
     inputs.devenv.packages.${system}.default
+    lutris
     p7zip
     rofi
-    runelite
     vim
   ];
 }
