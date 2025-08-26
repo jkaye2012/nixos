@@ -20,6 +20,12 @@
       inherit (self) outputs;
       system = "x86_64-linux";
       lib = nixpkgs.lib;
+
+      pkgs = import nixpkgs {
+        inherit system;
+        config.allowUnfree = true;
+      };
+
       extraSpecialArgs = {
         inherit inputs outputs system;
         extra-pkgs = [ ];
@@ -91,7 +97,12 @@
             home-manager.nixosModules.home-manager
             {
               home-manager.useUserPackages = true;
-              home-manager.extraSpecialArgs = extraSpecialArgs;
+              home-manager.extraSpecialArgs = extraSpecialArgs // {
+                extra-pkgs = [
+                  pkgs.playerctl
+                  pkgs.spotify
+                ];
+              };
               home-manager.users.jkaye = import ./home-manager/home.nix;
             }
           ];
@@ -100,18 +111,15 @@
       // vpsConfigs;
 
       homeConfigurations."jkaye@jkaye-framework" = home-manager.lib.homeManagerConfiguration {
-        pkgs = import nixpkgs {
-          inherit system;
-          config.allowUnfree = true;
-        };
+        inherit pkgs extraSpecialArgs;
+
         modules = [ ./home-manager/home.nix ];
-        extraSpecialArgs = extraSpecialArgs;
       };
 
       homeConfigurations."gitpod" = home-manager.lib.homeManagerConfiguration {
-        pkgs = nixpkgs.legacyPackages.${system};
+        inherit pkgs extraSpecialArgs;
+
         modules = [ ./home-manager/gitpod-home.nix ];
-        extraSpecialArgs = extraSpecialArgs;
       };
     };
 }

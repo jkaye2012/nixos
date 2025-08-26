@@ -9,7 +9,9 @@
     "flakes"
   ];
 
-  security.pki.certificates = [ "${builtins.getEnv "BT_CRT"}" ];
+  security.pki.certificateFiles = [
+    /etc/belvederetrading-sROOT-CA.crt
+  ];
 
   boot.loader = {
     grub = {
@@ -59,7 +61,7 @@
 
   services.printing.enable = true;
 
-  hardware.pulseaudio.enable = false;
+  services.pulseaudio.enable = false;
 
   security.rtkit.enable = true;
 
