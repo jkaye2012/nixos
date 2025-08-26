@@ -16,6 +16,9 @@
   home = {
     username = "jkaye";
     homeDirectory = "/home/jkaye";
+    sessionPath = [
+      "$HOME/.local/bin"
+    ];
 
     packages =
       with pkgs;
@@ -60,7 +63,7 @@
         . "$HOME/.secrets"
       fi
 
-      ${inputs.devenv.devShells.${system}.default.shellHook}
+      ${inputs.devenv.devShells.${system}.basic.shellHook}
     '';
   };
 
