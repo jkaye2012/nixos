@@ -111,7 +111,13 @@
       // vpsConfigs;
 
       homeConfigurations."jkaye@jkaye-framework" = home-manager.lib.homeManagerConfiguration {
-        inherit pkgs extraSpecialArgs;
+        inherit pkgs;
+
+        extraSpecialArgs = extraSpecialArgs // {
+          extra-pkgs = [
+            pkgs.steam
+          ];
+        };
 
         modules = [ ./home-manager/home.nix ];
       };
