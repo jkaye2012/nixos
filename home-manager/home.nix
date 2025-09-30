@@ -29,6 +29,7 @@
         gimp
         joplin-desktop
         nemo
+        jq
         spotify
         taplo
         xrdp
@@ -38,6 +39,7 @@
       ]
       ++ extra-pkgs;
 
+    file.".claude/commands".source = ../.claude/commands;
     file.".config/helix/languages.toml".source = ./helix-languages.toml;
   };
 

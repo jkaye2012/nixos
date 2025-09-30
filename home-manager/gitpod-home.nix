@@ -20,6 +20,7 @@
       with pkgs;
       [
         bash-language-server
+        jq
         taplo
         yaml-language-server
 
@@ -27,6 +28,7 @@
       ]
       ++ extra-pkgs;
 
+    file.".claude/commands".source = ../.claude/commands;
     file.".config/helix/languages.toml".source = ./helix-languages.toml;
   };
 
