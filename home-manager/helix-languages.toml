@@ -53,7 +53,7 @@ cargo.features = "all"
 [[language]]
 name = "rust"
 language-servers = ["rust-analyzer", "lsp-ai"]
-formatter = { command = "rustfmt", args = ["--edition", "2021"] }
+formatter = { command = "rustfmt", args = ["--edition", "2024"] }
 auto-format = true
 
 [[language]]

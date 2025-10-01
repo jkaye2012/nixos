@@ -53,7 +53,7 @@
         . "$HOME/.secrets"
       fi
 
-      ${inputs.devenv.devShells.${system}.default.shellHook}
+      ${inputs.devenv.devShells.${system}.basic.shellHook}
     '';
   };
 
