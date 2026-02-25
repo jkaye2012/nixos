@@ -71,13 +71,14 @@
 
   programs.ssh = {
     enable = true;
-    serverAliveInterval = 240;
-    controlPath = "~/.ssh/master-%C";
+    enableDefaultConfig = false;
     includes = [
       "code_gitpod.d/config"
     ];
 
     matchBlocks."*" = {
+      serverAliveInterval = 240;
+      controlPath = "~/.ssh/master-%C";
       forwardX11 = true;
       setEnv = {
         "TERM" = "xterm-256color";
@@ -89,11 +90,12 @@
 
   programs.git = {
     enable = true;
-    userName = "Jordan Kaye";
-    userEmail = "jordan.kaye2@gmail.com";
-    ignores = [
-      "lsp-ai-chat.md"
-    ];
+    settings = {
+      user = {
+        name = "Jordan Kaye";
+        email = "jordan.kaye2@gmail.com";
+      };
+    };
   };
 
   programs.home-manager.enable = true;

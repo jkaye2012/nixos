@@ -1,14 +1,14 @@
 {
   description = "Personal system configuration";
   inputs = {
-    nixpkgs.url = "github:NixOS/nixpkgs/nixos-25.05";
+    nixpkgs.url = "github:NixOS/nixpkgs/nixos-25.11";
     nixpkgs-unstable.url = "nixpkgs/nixos-unstable";
     # Devenv
     devenv.url = "github:jkaye2012/devenv/main";
     devenv.inputs.nixpkgs.follows = "nixpkgs";
     devenv.inputs.nixpkgs-unstable.follows = "nixpkgs-unstable";
     # Home-manager
-    home-manager.url = "github:nix-community/home-manager/release-25.05";
+    home-manager.url = "github:nix-community/home-manager/release-25.11";
     home-manager.inputs.nixpkgs.follows = "nixpkgs";
   };
   outputs =
