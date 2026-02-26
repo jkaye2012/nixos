@@ -92,8 +92,6 @@
 
   programs.firefox.enable = true;
 
-  programs.steam.enable = true;
-
   nixpkgs.config.allowUnfree = true;
 
   # This value determines the NixOS release from which the default

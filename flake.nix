@@ -83,7 +83,11 @@
             home-manager.nixosModules.home-manager
             {
               home-manager.useUserPackages = true;
-              home-manager.extraSpecialArgs = extraSpecialArgs;
+              home-manager.extraSpecialArgs = extraSpecialArgs // {
+                extra-pkgs = [
+                  pkgs.lutris
+                ];
+              };
               home-manager.users.jkaye = import ./home-manager/home.nix;
             }
           ];
@@ -117,6 +121,7 @@
 
         extraSpecialArgs = extraSpecialArgs // {
           extra-pkgs = [
+            pkgs.lutris
             pkgs.steam
           ];
         };
