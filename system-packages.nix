@@ -11,6 +11,7 @@
     ghostty
     git
     inputs.devenv.packages.${system}.default
+    libnotify
     p7zip
     rofi
     vim
