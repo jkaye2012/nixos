@@ -107,14 +107,14 @@
                 extra-pkgs = [
                   pkgs.playerctl
                   pkgs.spotify
+                  pkgs.xfce4-systemload-plugin
                 ];
               };
               home-manager.users.jkaye = import ./home-manager/home.nix;
             }
           ];
         };
-      }
-      // vpsConfigs;
+      } // vpsConfigs;
 
       homeConfigurations."jkaye@jkaye-framework" = home-manager.lib.homeManagerConfiguration {
         inherit pkgs;
