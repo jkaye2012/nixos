@@ -1,5 +1,7 @@
 #!/bin/bash
 
+echo "127.0.0.1 $(hostname)" | sudo tee -a /etc/hosts
+
 if id nixbld &>/dev/null; then
   echo "Deleting user nixbld"
   sudo userdel nixbld
