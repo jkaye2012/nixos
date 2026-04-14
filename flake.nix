@@ -104,17 +104,22 @@
             {
               home-manager.useUserPackages = true;
               home-manager.extraSpecialArgs = extraSpecialArgs // {
+                extra-aliases = {
+                  rebuild = "sudo nixos-rebuild switch --flake /home/jkaye/nixos --impure";
+                };
                 extra-pkgs = [
+                  pkgs.gparted
                   pkgs.playerctl
                   pkgs.spotify
-                  pkgs.xfce4-systemload-plugin
+                  pkgs.xfce.xfce4-systemload-plugin
                 ];
               };
               home-manager.users.jkaye = import ./home-manager/home.nix;
             }
           ];
         };
-      } // vpsConfigs;
+      }
+      // vpsConfigs;
 
       homeConfigurations."jkaye@jkaye-framework" = home-manager.lib.homeManagerConfiguration {
         inherit pkgs;
