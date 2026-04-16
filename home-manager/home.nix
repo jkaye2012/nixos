@@ -104,6 +104,16 @@
     };
   };
 
+  programs.jujutsu = {
+    enable = true;
+    settings = {
+      user = {
+        name = "Jordan Kaye";
+        email = "jordan.kaye2@gmail.com";
+      };
+    };
+  };
+
   programs.home-manager.enable = true;
 
   home.stateVersion = "24.05";
