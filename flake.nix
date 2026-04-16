@@ -30,6 +30,10 @@
 
       extraSpecialArgs = {
         inherit inputs outputs system;
+        user-info = {
+          name = "Jordan Kaye";
+          email = "jordan.kaye2@gmail.com";
+        };
         extra-pkgs = [ ];
         extra-aliases = { };
       };
@@ -113,6 +117,9 @@
                   pkgs.spotify
                   pkgs.xfce.xfce4-systemload-plugin
                 ];
+                user-info = extraSpecialArgs.user-info // {
+                  email = "jkaye@belvederetrading.com";
+                };
               };
               home-manager.users.jkaye = import ./home-manager/home.nix;
             }

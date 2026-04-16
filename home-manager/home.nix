@@ -2,6 +2,7 @@
   pkgs,
   inputs,
   system,
+  user-info,
   extra-pkgs,
   extra-aliases,
   ...
@@ -98,8 +99,8 @@
     enable = true;
     settings = {
       user = {
-        name = "Jordan Kaye";
-        email = "jordan.kaye2@gmail.com";
+        name = user-info.name;
+        email = user-info.email;
       };
     };
   };
@@ -108,8 +109,8 @@
     enable = true;
     settings = {
       user = {
-        name = "Jordan Kaye";
-        email = "jordan.kaye2@gmail.com";
+        name = user-info.name;
+        email = user-info.email;
       };
     };
   };
