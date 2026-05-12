@@ -12,6 +12,7 @@
     git
     inputs.devenv.packages.${system}.default
     libnotify
+    microsoft-edge
     p7zip
     rofi
     vim
