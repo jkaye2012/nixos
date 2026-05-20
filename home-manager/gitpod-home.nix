@@ -29,6 +29,7 @@
       ++ extra-pkgs;
 
     file.".claude/commands".source = ../.claude/commands;
+    file.".claude/skills".source = ../.claude/skill;
     file.".config/helix/languages.toml".source = ./helix-languages.toml;
   };
 
