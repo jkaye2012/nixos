@@ -14,11 +14,11 @@
         "wrapper-manager": "wrapper-manager"
       },
       "locked": {
-        "lastModified": 1781704389,
-        "narHash": "sha256-zP+wI0SjygpgN5wvd+IO+PIo9fB+RMu5reeYwIH3fUU=",
+        "lastModified": 1782054628,
+        "narHash": "sha256-wCCvDnLZJlDyrhZiLreFw8KUymiPmxfr0QK/WYil5YQ=",
         "owner": "jkaye2012",
         "repo": "devenv",
-        "rev": "119ebd5b795127327d9f629fc4e126adf19cbe07",
+        "rev": "44cc7614ec1902aadc23f06b39d29f4fc6c0aabf",
         "type": "github"
       },
       "original": {
