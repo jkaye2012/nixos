@@ -84,11 +84,11 @@
       "code_gitpod.d/config"
     ];
 
-    matchBlocks."*" = {
-      serverAliveInterval = 240;
-      controlPath = "~/.ssh/master-%C";
-      forwardX11 = true;
-      setEnv = {
+    settings."*" = {
+      ServerAliveInterval = 240;
+      ControlPath = "~/.ssh/master-%C";
+      ForwardX11 = true;
+      SetEnv = {
         "TERM" = "xterm-256color";
       };
     };
