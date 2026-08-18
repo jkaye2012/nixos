@@ -29,8 +29,9 @@
         firefox
         gimp
         joplin-desktop
-        nemo
         jq
+        nemo
+        obsidian
         spotify
         taplo
         xrdp
