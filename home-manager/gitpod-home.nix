@@ -6,12 +6,6 @@
   ...
 }:
 {
-  nixpkgs = {
-    config = {
-      allowUnfree = true;
-    };
-  };
-
   home = {
     username = "gitpod";
     homeDirectory = "/home/gitpod";

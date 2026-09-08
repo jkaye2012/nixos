@@ -8,12 +8,6 @@
   ...
 }:
 {
-  nixpkgs = {
-    config = {
-      allowUnfree = true;
-    };
-  };
-
   home = {
     username = "jkaye";
     homeDirectory = "/home/jkaye";

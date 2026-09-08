@@ -15,6 +15,7 @@
     {
       self,
       nixpkgs,
+      nixpkgs-unstable,
       home-manager,
       ...
     }@inputs:
@@ -23,9 +24,26 @@
       system = "x86_64-linux";
       lib = nixpkgs.lib;
 
-      pkgs = import nixpkgs {
+      unstable = import nixpkgs-unstable {
         inherit system;
         config.allowUnfree = true;
+      };
+
+      unstableOverlay = final: prev: { inherit unstable; };
+      overlays = [ unstableOverlay ];
+
+      pkgs = import nixpkgs {
+        inherit system overlays;
+        config.allowUnfree = true;
+      };
+
+      # Shared nixpkgs settings for every nixosConfiguration; home-manager
+      # reuses these via useGlobalPkgs.
+      nixpkgsConfig = {
+        nixpkgs = {
+          inherit overlays;
+          config.allowUnfree = true;
+        };
       };
 
       extraSpecialArgs = {
@@ -60,9 +78,11 @@
             modules = [
               ./nixos-configurations/vps-configuration.nix
               ./system-packages.nix
+              nixpkgsConfig
 
               home-manager.nixosModules.home-manager
               {
+                home-manager.useGlobalPkgs = true;
                 home-manager.useUserPackages = true;
                 home-manager.extraSpecialArgs = extraSpecialArgs // {
                   extra-aliases = {
@@ -76,6 +96,8 @@
         );
     in
     {
+      overlays.unstable = unstableOverlay;
+
       nixosConfigurations = {
         nixos = nixpkgs.lib.nixosSystem {
           inherit system;
@@ -83,9 +105,11 @@
           modules = [
             ./configuration.nix
             ./system-packages.nix
+            nixpkgsConfig
 
             home-manager.nixosModules.home-manager
             {
+              home-manager.useGlobalPkgs = true;
               home-manager.useUserPackages = true;
               home-manager.extraSpecialArgs = extraSpecialArgs // {
                 extra-pkgs = [
@@ -103,9 +127,11 @@
           modules = [
             ./bt-configuration.nix
             ./system-packages.nix
+            nixpkgsConfig
 
             home-manager.nixosModules.home-manager
             {
+              home-manager.useGlobalPkgs = true;
               home-manager.useUserPackages = true;
               home-manager.extraSpecialArgs = extraSpecialArgs // {
                 extra-aliases = {
