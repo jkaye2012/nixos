@@ -28,6 +28,7 @@
         obsidian
         spotify
         taplo
+        unstable.pi-coding-agent
         xrdp
         yaml-language-server
 
