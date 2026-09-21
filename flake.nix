@@ -160,7 +160,6 @@
         extraSpecialArgs = extraSpecialArgs // {
           extra-pkgs = [
             pkgs.lutris
-            pkgs.steam
           ];
         };
 
