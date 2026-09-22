@@ -3,6 +3,10 @@
   inputs = {
     nixpkgs.url = "github:NixOS/nixpkgs/nixos-26.05";
     nixpkgs-unstable.url = "nixpkgs/nixos-unstable";
+    nixgl = {
+      url = "github:nix-community/nixGL";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
     # Devenv
     devenv.url = "github:jkaye2012/devenv/main";
     devenv.inputs.nixpkgs.follows = "nixpkgs";
@@ -15,6 +19,7 @@
     {
       self,
       nixpkgs,
+      nixgl,
       nixpkgs-unstable,
       home-manager,
       ...
@@ -30,7 +35,10 @@
       };
 
       unstableOverlay = final: prev: { inherit unstable; };
-      overlays = [ unstableOverlay ];
+      overlays = [
+        unstableOverlay
+        nixgl.overlay
+      ];
 
       pkgs = import nixpkgs {
         inherit system overlays;
@@ -158,8 +166,12 @@
         inherit pkgs;
 
         extraSpecialArgs = extraSpecialArgs // {
+          extra-aliases = {
+            ghostty = "nixGLIntel ghostty";
+          };
           extra-pkgs = [
             pkgs.lutris
+            pkgs.nixgl.nixGLIntel
           ];
         };
 
