@@ -25,6 +25,7 @@
         joplin-desktop
         jq
         nemo
+        nodejs_26
         obsidian
         spotify
         taplo

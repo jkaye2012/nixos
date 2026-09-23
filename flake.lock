@@ -36,11 +36,11 @@
         "wrapper-manager": "wrapper-manager"
       },
       "locked": {
-        "lastModified": 1790080993,
-        "narHash": "sha256-4xV6DTKYRDn6LaL7hj6ku470yhYGlGxnyUnVvJHtqGI=",
+        "lastModified": 1790166443,
+        "narHash": "sha256-NaB0mAHS+KZCrD4koH0Zl9k6nVkHdmC7ZSQHIFApZxY=",
         "owner": "jkaye2012",
         "repo": "devenv",
-        "rev": "38fddba72e04f14cbc8b259fb95c2ac0dbddfaca",
+        "rev": "67b3aad2d2973fa4190c3b7d1bf2eb6fdbf2fc1b",
         "type": "github"
       },
       "original": {
@@ -185,10 +185,10 @@
     "nixpkgs-unstable": {
       "locked": {
         "lastModified": 315532800,
-        "narHash": "sha256-uLLUj+TLUmBc6KrUzx76KZdPi5ZkI1ORR9A6lJUIZlo=",
-        "rev": "44a91898084f46797b5fac650c7e8c9ac38c43d4",
+        "narHash": "sha256-OJe62m8gZx4xEAQnMcqH1u31/uu4Xf0q2ykAEHZfgrg=",
+        "rev": "6774f7bc253789b113a4f39285dc0fa100abeacc",
         "type": "tarball",
-        "url": "https://releases.nixos.org/nixos/unstable/nixos-26.11pre1077143.44a91898084f/nixexprs.tar.zst?lastModified=1789921291"
+        "url": "https://releases.nixos.org/nixos/unstable/nixos-26.11pre1077996.6774f7bc2537/nixexprs.tar.zst?lastModified=1790046670"
       },
       "original": {
         "id": "nixpkgs",
