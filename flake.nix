@@ -159,6 +159,42 @@
             }
           ];
         };
+
+        colwksdev002 = nixpkgs.lib.nixosSystem {
+          inherit system;
+          specialArgs = { inherit inputs outputs system; };
+          modules = [
+            ./colwksdev002.nix
+            ./system-packages.nix
+            nixpkgsConfig
+
+            home-manager.nixosModules.home-manager
+            {
+              home-manager.useGlobalPkgs = true;
+              home-manager.useUserPackages = true;
+              home-manager.extraSpecialArgs = extraSpecialArgs // {
+                extra-aliases = {
+                  rebuild = "sudo nixos-rebuild switch --flake /home/jkaye/nixos --impure";
+                };
+                extra-pkgs = [
+                  pkgs.gparted
+                  pkgs.playerctl
+                  pkgs.spotify
+                  pkgs.xfce.xfce4-systemload-plugin
+                ];
+                user-info = extraSpecialArgs.user-info // {
+                  email = "jkaye@belvederetrading.com";
+                };
+              };
+              home-manager.users.jkaye = {
+                imports = [
+                  ./home-manager/home.nix
+                  ./home-manager/xfce.nix
+                ];
+              };
+            }
+          ];
+        };
       }
       // vpsConfigs;
 

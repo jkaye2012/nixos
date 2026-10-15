@@ -32,6 +32,9 @@
   hardware.bluetooth.powerOnBoot = true;
   hardware.enableAllFirmware = true;
 
+  environment.systemPackages = with pkgs; [
+    keymapp
+  ];
   time.timeZone = "America/Denver";
 
   i18n.defaultLocale = "en_US.UTF-8";
