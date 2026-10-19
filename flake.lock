@@ -36,11 +36,11 @@
         "wrapper-manager": "wrapper-manager"
       },
       "locked": {
-        "lastModified": 1792413466,
-        "narHash": "sha256-bZOGkxtYtPB4bv9Qzah2Af3wquXTfPTAdrGzwrnSKTA=",
+        "lastModified": 1792414387,
+        "narHash": "sha256-4RbFTANNT0Nqc0+oVVKoCW1Y1pY4ZJQDuSmW+anRuc8=",
         "owner": "jkaye2012",
         "repo": "devenv",
-        "rev": "28d6f8b2de22d74d27baca83d6f50bede848c573",
+        "rev": "87ef4b3bf02db2c052da1c39d6f57a346ea488c5",
         "type": "github"
       },
       "original": {
