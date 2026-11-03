@@ -40,7 +40,8 @@
     file.".claude/commands".source = ../.claude/commands;
     file.".claude/skills".source = ../.claude/skills;
     file.".config/helix/languages.toml".source = ./helix-languages.toml;
-    file.".pi".source = config.lib.file.mkOutOfStoreSymlink "${config.home.homeDirectory}/git/dotfiles/pi-agent";
+    file.".pi".source =
+      config.lib.file.mkOutOfStoreSymlink "${config.home.homeDirectory}/git/dotfiles/pi-agent";
   };
 
   programs.bash = {
@@ -80,6 +81,7 @@
     enableDefaultConfig = false;
     includes = [
       "code_gitpod.d/config"
+      "localconfig"
     ];
 
     settings."*" = {
